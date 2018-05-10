@@ -80,7 +80,7 @@ flags.DEFINE_string('vis_split', 'val',
 
 flags.DEFINE_string('dataset_dir', None, 'Where the dataset reside.')
 
-flags.DEFINE_enum('colormap_type', 'pascal', ['pascal', 'cityscapes'],
+flags.DEFINE_enum('colormap_type', 'pascal', ['pascal', 'cityscapes','ade'],
                   'Visualization colormap type.')
 
 flags.DEFINE_boolean('also_save_raw_predictions', False,
@@ -97,7 +97,7 @@ _SEMANTIC_PREDICTION_SAVE_FOLDER = 'segmentation_results'
 _RAW_SEMANTIC_PREDICTION_SAVE_FOLDER = 'raw_segmentation_results'
 
 # The format to save image.
-_IMAGE_FORMAT = '%06d_image'
+_IMAGE_FORMAT = '%s_ori'
 
 # The format to save prediction
 _PREDICTION_FORMAT = '%06d_prediction'
@@ -162,18 +162,18 @@ def _process_batch(sess, original_images, semantic_predictions, image_names,
     crop_semantic_prediction = semantic_prediction[:image_height, :image_width]
 
     # Save image.
-    save_annotation.save_annotation(
-        original_image, save_dir, _IMAGE_FORMAT % (image_id_offset + i),
-        add_colormap=False)
+    # save_annotation.save_annotation(
+    #     original_image, save_dir, _IMAGE_FORMAT % (os.path.basename(image_names[i])[:-4]),
+    #     add_colormap=False)
 
     # Save prediction.
     save_annotation.save_annotation(
         crop_semantic_prediction, save_dir,
-        _PREDICTION_FORMAT % (image_id_offset + i), add_colormap=True,
+        os.path.basename(image_names[i])[:-4], add_colormap=True,
         colormap_type=FLAGS.colormap_type)
 
     if FLAGS.also_save_raw_predictions:
-      image_filename = os.path.basename(image_names[i])
+      image_filename = os.path.basename(image_names[i])[:-4]
 
       if train_id_to_eval_id is not None:
         crop_semantic_prediction = _convert_train_id_to_eval_id(

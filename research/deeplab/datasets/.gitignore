@@ -1,0 +1,13 @@
+ADE20K/tfrecord_*
+ADE20K/init_models_*
+ADE20K/exp_*
+ADE20K/exp/train_on_trainval_set_*
+
+ADE20K/iter
+
+ADE20K/ADEChallengeData2016/*
+!ADE20K/ADEChallengeData2016/readme.md
+ADE20K/init_models/*
+!ADE20K/init_models/readme.md
+ADE20K/tfrecord/*
+!ADE20K/tfrecord/readme.md

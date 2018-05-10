@@ -59,9 +59,10 @@ download_and_uncompress() {
 BASE_URL="http://data.csail.mit.edu/places/ADEchallenge"
 FILENAME="ADEChallengeData2016.zip"
 
-download_and_uncompress "${BASE_URL}" "${FILENAME}"
+#download_and_uncompress "${BASE_URL}" "${FILENAME}"
 
 cd "${CURRENT_DIR}"
+#matlab -nodisplay -r "preimg;exit"
 
 # Root path for ADE20K dataset.
 ADE20K_ROOT="${WORK_DIR}/ADEChallengeData2016"
@@ -72,9 +73,42 @@ OUTPUT_DIR="${WORK_DIR}/tfrecord"
 mkdir -p "${OUTPUT_DIR}"
 
 echo "Converting ADE20K dataset..."
+# python ./build_ade20k_data.py  \
+#   --train_image_folder="${ADE20K_ROOT}/images/training/" \
+#   --train_image_label_folder="${ADE20K_ROOT}/annotations/training/" \
+#   --val_image_folder="${ADE20K_ROOT}/images/validation/" \
+#   --val_image_label_folder="${ADE20K_ROOT}/annotations/validation/" \
+#   --output_dir="${OUTPUT_DIR}"
+
+OUTPUT_DIR="${WORK_DIR}/tfrecord_v1_0"
+mkdir -p "${OUTPUT_DIR}"
+
+echo "Converting ADE20K dataset class 0..."
 python ./build_ade20k_data.py  \
-  --train_image_folder="${ADE20K_ROOT}/images/training/" \
-  --train_image_label_folder="${ADE20K_ROOT}/annotations/training/" \
-  --val_image_folder="${ADE20K_ROOT}/images/validation/" \
-  --val_image_label_folder="${ADE20K_ROOT}/annotations/validation/" \
+  --train_image_folder="${ADE20K_ROOT}/v1/img_train_0/" \
+  --train_image_label_folder="${ADE20K_ROOT}/v1/anno_train_0/" \
+  --val_image_folder="${ADE20K_ROOT}/v1/img_val_0/" \
+  --val_image_label_folder="${ADE20K_ROOT}/v1/anno_val_0/" \
+  --output_dir="${OUTPUT_DIR}"
+
+OUTPUT_DIR="${WORK_DIR}/tfrecord_v1_1"
+mkdir -p "${OUTPUT_DIR}"
+
+echo "Converting ADE20K dataset class 1..."
+python ./build_ade20k_data.py  \
+  --train_image_folder="${ADE20K_ROOT}/v1/img_train_1/" \
+  --train_image_label_folder="${ADE20K_ROOT}/v1/anno_train_1/" \
+  --val_image_folder="${ADE20K_ROOT}/v1/img_val_1/" \
+  --val_image_label_folder="${ADE20K_ROOT}/v1/anno_val_1/" \
+  --output_dir="${OUTPUT_DIR}"
+
+OUTPUT_DIR="${WORK_DIR}/tfrecord_v1_2"
+mkdir -p "${OUTPUT_DIR}"
+
+echo "Converting ADE20K dataset class 2..."
+python ./build_ade20k_data.py  \
+  --train_image_folder="${ADE20K_ROOT}/v1/img_train_2/" \
+  --train_image_label_folder="${ADE20K_ROOT}/v1/anno_train_2/" \
+  --val_image_folder="${ADE20K_ROOT}/v1/img_val_2/" \
+  --val_image_label_folder="${ADE20K_ROOT}/v1/anno_val_2/" \
   --output_dir="${OUTPUT_DIR}"

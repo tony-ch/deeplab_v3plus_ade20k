@@ -14,12 +14,10 @@
 # limitations under the License.
 # ==============================================================================
 #
-# This script is used to run local test on PASCAL VOC 2012. Users could also
-# modify from this script for their use case.
-#
+# This script is used to run training and test on ADE20K using mobilenetv2 deeplab v3+ model.
 # Usage:
 #   # From the tensorflow/models/research/deeplab directory.
-#   sh ./local_test.sh
+#   sh ./ade20k_mv2.sh
 #
 #
 
@@ -119,9 +117,7 @@ python "${WORK_DIR}"/train.py \
   --train_logdir="${TRAIN_LOGDIR}" \
   --dataset_dir="${ADE_DATASET}"
 
-# Run evaluation. This performs eval over the full val split (1449 images) and
-# will take a while.
-# Using the provided checkpoint, one should expect mIOU=82.20%.
+# Run evaluation. This performs eval over the full val
 # python "${WORK_DIR}"/eval.py \
 #   --logtostderr \
 #   --eval_split="val" \

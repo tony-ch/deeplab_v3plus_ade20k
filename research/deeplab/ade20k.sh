@@ -14,12 +14,11 @@
 # limitations under the License.
 # ==============================================================================
 #
-# This script is used to run local test on PASCAL VOC 2012. Users could also
-# modify from this script for their use case.
+# This script is used to run training and  test on ADE20K using xception deeplab v3+.
 #
 # Usage:
 #   # From the tensorflow/models/research/deeplab directory.
-#   sh ./local_test.sh
+#   sh ./ade20k.sh
 #
 #
 

@@ -1,3 +1,6 @@
+# Deeplab v3+ ADE20K
+使用deeplab v3+ 在ADE20K数据集上进行语义分割实验，主要更改在research/deeplab目录下
+
 # TensorFlow Models
 
 This repository contains a number of different models implemented in [TensorFlow](https://www.tensorflow.org):

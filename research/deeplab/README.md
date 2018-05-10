@@ -1,3 +1,16 @@
+# Deeplab v3+ ADE20K
+
+使用Deeplab v3+ 进行ADE20K场景相关的语义分割实验.
+
+- model.py是模型定义文件
+- train.py eval.py和vis.py分别是训练、测试和可视化脚本
+- export_model.py是导出模型的脚本
+- local_test.sh是测试本地环境配置的文件
+- ade20k.sh是集成了训练、测试和可视化的脚本文件，根据local_test.sh调整得到，可以用于在不同场景类别下训练新模型和优化已有模型
+- ade20k_task.sh是在ade20k.sh的基础上加上shell参数传递的脚本，结合task.sh可以实现多个训练任务的连续执行
+
+直接运行的脚本是task.sh，更改task.sh可以指定要执行的训练和测试任务
+
 # DeepLab: Deep Labelling for Semantic Image Segmentation
 
 DeepLab is a state-of-art deep learning model for semantic image segmentation,

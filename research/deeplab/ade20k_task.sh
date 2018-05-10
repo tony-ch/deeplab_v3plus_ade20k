@@ -14,14 +14,15 @@
 # limitations under the License.
 # ==============================================================================
 #
-# This script is used to run local test on PASCAL VOC 2012. Users could also
-# modify from this script for their use case.
+# This script is used to run training and test on ADE20K using xception deeplab v3+ model. This script should only be
+# used to fine-tune on pre-trained models, the iter of pre-train models should be places in dataset/ADE20K/init_model_$ITER.
 #
 # Usage:
 #   # From the tensorflow/models/research/deeplab directory.
-#   sh ./local_test.sh
-#
-#
+#   sh ./ade20k_task.sh $1 $2 $3 # see demo task.sh
+#   $1 determine which init model will be used, should be in [40000 80000 120000]
+#   $2 is ITER_NUM
+#   $3 is related to scene classification. see readme.md for more details.
 
 # Exit immediately if a command exits with a non-zero status.
 set -e
